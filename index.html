@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mis XV Años - Sofía | Invitación Digital</title>
+  <!-- Fuentes elegantes de Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Great+Vibes&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-color: #fdf8f9;
+      --primary: #b76e79;      /* Oro Rosa */
+      --primary-dark: #8e4b56;
+      --gold: #d4af37;
+      --text-dark: #2c2c2c;
+      --text-muted: #666666;
+      --card-bg: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-dark);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Portada Hero */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(rgba(20, 15, 18, 0.55), rgba(20, 15, 18, 0.7)),
+                  url('https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=80') center/cover no-repeat;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #fff;
+      padding: 2rem 1.5rem;
+      position: relative;
+    }
+
+    .hero-subtitle {
+      font-family: 'Cinzel', serif;
+      letter-spacing: 4px;
+      font-size: 0.95rem;
+      text-transform: uppercase;
+      color: #f3d5dc;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 4.5rem;
+      font-weight: 400;
+      color: #ffffff;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.4);
+      margin: 0.2rem 0;
+    }
+
+    .hero-date {
+      font-family: 'Cinzel', serif;
+      font-size: 1.15rem;
+      letter-spacing: 3px;
+      border-top: 1px solid rgba(255,255,255,0.5);
+      border-bottom: 1px solid rgba(255,255,255,0.5);
+      padding: 0.6rem 1.5rem;
+      margin-top: 1rem;
+    }
+
+    /* Botón flotante de música */
+    .music-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.3rem;
+      box-shadow: 0 4px 15px rgba(183, 110, 121, 0.5);
+      cursor: pointer;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.2s;
+    }
+    .music-btn:active { transform: scale(0.92); }
+
+    /* Contenedores generales */
+    .container {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 3rem 1.5rem;
+      text-align: center;
+    }
+
+    .section-title {
+      font-family: 'Great Vibes', cursive;
+      font-size: 3rem;
+      color: var(--primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      font-family: 'Cinzel', serif;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+    }
+
+    /* Tarjetas */
+    .card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      padding: 2rem 1.5rem;
+      margin-bottom: 1.8rem;
+      box-shadow: 0 10px 30px rgba(183, 110, 121, 0.08);
+      border: 1px solid rgba(183, 110, 121, 0.15);
+    }
+
+    /* Cuenta Regresiva */
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+
+    .time-box {
+      background: var(--bg-color);
+      border: 1px solid rgba(183, 110, 121, 0.25);
+      border-radius: 12px;
+      padding: 0.8rem 0.3rem;
+    }
+
+    .time-box span {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    .time-box small {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+    }
+
+    /* Padres y Padrinos */
+    .names-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.2rem;
+      margin-top: 1rem;
+    }
+    .names-block h4 {
+      font-family: 'Cinzel', serif;
+      color: var(--primary);
+      font-size: 0.9rem;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.3rem;
+    }
+
+    /* Botones */
+    .btn {
+      display: inline-block;
+      background: var(--primary);
+      color: #fff;
+      text-decoration: none;
+      padding: 0.85rem 1.8rem;
+      border-radius: 50px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      margin-top: 1rem;
+      transition: background 0.3s, transform 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn:hover { background: var(--primary-dark); }
+    .btn-outline {
+      background: transparent;
+      color: var(--primary-dark);
+      border: 1.5px solid var(--primary);
+    }
+    .btn-whatsapp {
+      background: #25D366;
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
+    }
+    .btn-whatsapp:hover { background: #1ebe5d; }
+
+    /* Formulario RSVP */
+    .rsvp-input {
+      width: 100%;
+      padding: 0.85rem 1rem;
+      margin: 0.5rem 0;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-family: inherit;
+      font-size: 0.95rem;
+    }
+
+    /* Banner KonekParty */
+    .konek-party-box {
+      background: linear-gradient(135deg, #161822, #232738);
+      color: #ffffff;
+      border-radius: 18px;
+      padding: 2rem 1.5rem;
+      margin-top: 2rem;
+    }
+    .konek-party-box h3 {
+      font-family: 'Cinzel', serif;
+      color: #38bdf8;
+      margin-bottom: 0.5rem;
+    }
+    .btn-konek {
+      background: #0ea5e9;
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    footer strong { color: var(--text-dark); }
+  </style>
+</head>
+<body>
+
+  <!-- Audio de fondo (puedes cambiar el enlace MP3 por cualquier canción) -->
+  <audio id="bgMusic" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+  <button class="music-btn" onclick="toggleMusic()" title="Música">🎵</button>
+
+  <!-- PORTADA -->
+  <header class="hero">
+    <p class="hero-subtitle">Mis XV Años</p>
+    <h1 class="hero-title" id="nombreFestejada">Sofía Valentina</h1>
+    <p style="max-width: 420px; font-size: 0.95rem; opacity: 0.9;">
+      "Hay momentos en la vida que imaginamos, soñamos y esperamos. Uno de esos momentos ha llegado."
+    </p>
+    <div class="hero-date" id="fechaTexto">19 • DICIEMBRE • 2026</div>
+  </header>
+
+  <main class="container">
+
+    <!-- CUENTA REGRESIVA -->
+    <section class="card">
+      <h2 class="section-title">Falta muy poco</h2>
+      <p class="section-subtitle">Cuenta regresiva para el gran día</p>
+      <div class="countdown">
+        <div class="time-box"><span id="days">00</span><small>Días</small></div>
+        <div class="time-box"><span id="hours">00</span><small>Horas</small></div>
+        <div class="time-box"><span id="minutes">00</span><small>Min</small></div>
+        <div class="time-box"><span id="seconds">00</span><small>Seg</small></div>
+      </div>
+    </section>
+
+    <!-- PADRES Y PADRINOS -->
+    <section class="card">
+      <h2 class="section-title">Con la bendición de</h2>
+      <div class="names-grid">
+        <div class="names-block">
+          <h4>MIS PADRES</h4>
+          <p>Roberto Hernández &amp; Mariana López</p>
+        </div>
+        <div class="names-block">
+          <h4>MIS PADRINOS</h4>
+          <p>Carlos Mendoza &amp; Fernanda Ruiz</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- UBICACIONES (CEREMONIA Y RECEPCIÓN) -->
+    <section class="card">
+      <h2 class="section-title">¿Dónde y Cuándo?</h2>
+      <p class="section-subtitle">Acompáñanos en cada momento</p>
+
+      <div style="margin-bottom: 1.8rem;">
+        <div style="font-size: 2rem;">⛪</div>
+        <h3 style="font-family: 'Cinzel', serif; margin: 0.3rem 0;">Ceremonia Religiosa</h3>
+        <p><strong>5:00 PM</strong> — Parroquia de San Judas Tadeo</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Av. Principal #120, Tecámac, Edo. Méx.</p>
+        <a href="https://maps.google.com/?q=Tecamac+Centro" target="_blank" class="btn btn-outline">📍 Ver Mapa</a>
+      </div>
+
+      <hr style="border: 0; border-top: 1px solid #eee; margin: 1.5rem 0;">
+
+      <div>
+        <div style="font-size: 2rem;">🥂</div>
+        <h3 style="font-family: 'Cinzel', serif; margin: 0.3rem 0;">Recepción</h3>
+        <p><strong>7:30 PM</strong> — Jardín de Eventos Los Arcos</p>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Carr. Federal México-Pachuca Km 38, Tizayuca.</p>
+        <a href="https://maps.google.com/?q=Tizayuca+Centro" target="_blank" class="btn btn-outline">📍 Ver Mapa</a>
+      </div>
+    </section>
+
+    <!-- CÓDIGO DE VESTIMENTA Y MESA DE REGALOS -->
+    <section class="card">
+      <h2 class="section-title">Detalles del Evento</h2>
+      <div style="margin-bottom: 1.5rem;">
+        <div style="font-size: 1.8rem;">👗🤵</div>
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 0.3rem;">Código de Vestimenta: Formal</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Reservamos el color Rosa Palo exclusivamente para la quinceañera.</p>
+      </div>
+      <div>
+        <div style="font-size: 1.8rem;">✉️</div>
+        <h4 style="font-family: 'Cinzel', serif; margin-top: 0.3rem;">Lluvia de Sobres</h4>
+        <p style="font-size: 0.85rem; color: var(--text-muted);">Tu presencia es mi mejor regalo, pero si deseas tener un detalle conmigo habrá un buzón en la recepción.</p>
+      </div>
+    </section>
+
+    <!-- CONFIRMACIÓN DE ASISTENCIA POR WHATSAPP -->
+    <section class="card">
+      <h2 class="section-title">Confirma tu Asistencia</h2>
+      <p class="section-subtitle">Favor de confirmar antes del 5 de Diciembre</p>
+      
+      <input type="text" id="guestName" class="rsvp-input" placeholder="Escribe tu nombre completo..." />
+      <select id="guestCount" class="rsvp-input">
+        <option value="1 persona">Asistiré (1 pase)</option>
+        <option value="2 personas">Asistiremos (2 pases)</option>
+        <option value="3 personas">Asistiremos (3 pases)</option>
+        <option value="4 personas">Asistiremos (4 pases)</option>
+      </select>
+      
+      <button onclick="confirmarWhatsApp()" class="btn btn-whatsapp">📲 Confirmar por WhatsApp</button>
+    </section>
+
+    <!-- INTEGRACIÓN CON KONEKPARTY LIVE -->
+    <section class="konek-party-box">
+      <div style="font-size: 1.8rem; margin-bottom: 0.3rem;">📸⚡</div>
+      <h3>Álbum en Vivo • KonekParty</h3>
+      <p style="font-size: 0.88rem; color: #cbd5e1; margin-bottom: 1rem;">
+        El día de la fiesta sube tus fotos y selfies directamente a nuestra galería digital conmemorativa sin instalar aplicaciones.
+      </p>
+      <!-- Aquí pegas el enlace de KonekParty Live del evento -->
+      <a href="#galeria-konekparty" class="btn btn-konek">Abrir Galería del Evento</a>
+    </section>
+
+  </main>
+
+  <footer>
+    Invitación Digital creada por <strong>KONEK Print &amp; Tech</strong> ⚡<br>
+    ¿Quieres una invitación así para tu evento? <a href="https://wa.me/525585547950" style="color: var(--primary-dark);">Contáctanos</a>
+  </footer>
+
+  <script>
+    // ==========================================
+    // CONFIGURACIÓN RÁPIDA DEL EVENTO (EDITA AQUÍ)
+    // ==========================================
+    const EVENTO_CONFIG = {
+      fechaObjetivo: "December 19, 2026 17:00:00", // Formato: Mes Día, Año HH:MM:SS
+      whatsappConfirmacion: "525585547950",         // Número de los papás o tuyo con 52
+      nombreFestejada: "Sofía Valentina"
+    };
+
+    // 1. Cuenta regresiva automática
+    const targetDate = new Date(EVENTO_CONFIG.fechaObjetivo).getTime();
+
+    setInterval(() => {
+      const now = new Date().getTime();
+      const distance = targetDate - now;
+
+      if (distance < 0) return;
+
+      document.getElementById("days").innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+      document.getElementById("hours").innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+      document.getElementById("minutes").innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+      document.getElementById("seconds").innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+    }, 1000);
+
+    // 2. Botón de confirmación directa a WhatsApp
+    function confirmarWhatsApp() {
+      const nombre = document.getElementById("guestName").value.trim();
+      const pases = document.getElementById("guestCount").value;
+
+      if (!nombre) {
+        alert("Por favor escribe tu nombre para confirmar.");
+        return;
+      }
+
+      const mensaje = `¡Hola! Confirmo mi asistencia a los XV Años de ${EVENTO_CONFIG.nombreFestejada}.\n👤 Nombre: ${nombre}\n🎟️ Pases: ${pases}`;
+      const url = `https://wa.me/${EVENTO_CONFIG.whatsappConfirmacion}?text=${encodeURIComponent(mensaje)}`;
+      window.open(url, "_blank");
+    }
+
+    // 3. Control de música
+    const music = document.getElementById("bgMusic");
+    let isPlaying = false;
+    function toggleMusic() {
+      if (isPlaying) {
+        music.pause();
+        isPlaying = false;
+      } else {
+        music.play();
+        isPlaying = true;
+      }
+    }
+  </script>
+</body>
+</html>

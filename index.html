@@ -105,7 +105,6 @@
     .editor-btn-green { background: #10b981; }
     .editor-btn-red { background: #ef4444; padding: 4px 7px; }
 
-    /* Ruleta / Muestras rápidas de color */
     .color-wheel-wrap {
       display: inline-flex;
       align-items: center;
@@ -260,6 +259,7 @@
       color: #fef08a;
     }
 
+    /* Botones flotantes (Música + Ver mi Pase) */
     .music-btn {
       position: fixed;
       bottom: 20px;
@@ -277,6 +277,25 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .floating-pass-btn {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: #0f172a;
+      color: #fde047;
+      border: 2px solid #fbbf24;
+      padding: 10px 16px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.35);
+      cursor: pointer;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      gap: 6px;
     }
 
     /* Contenedor y Cuadros Interiores */
@@ -498,6 +517,54 @@
       letter-spacing: 1px;
     }
 
+    /* ESTILOS DEL PASE DIGITAL GENERADO (SIN QR, CON NOMBRE DEL EVENTO Y DESCARGA) */
+    .digital-pass-card {
+      margin-top: 1.5rem;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #ffffff;
+      border-radius: 20px;
+      padding: 1.6rem 1.2rem;
+      border: 2.5px solid #fbbf24;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+      position: relative;
+      text-align: center;
+    }
+    .pass-badge {
+      display: inline-block;
+      background: rgba(251, 191, 36, 0.2);
+      color: #fde047;
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+    .pass-divider {
+      border: 0;
+      border-top: 2px dashed rgba(255,255,255,0.25);
+      margin: 1rem 0;
+    }
+    .pass-event-emblem {
+      background: rgba(251, 191, 36, 0.12);
+      border: 1.5px solid rgba(251, 191, 36, 0.55);
+      border-radius: 14px;
+      padding: 0.9rem 1rem;
+      margin: 0.8rem 0;
+    }
+    .pass-warning-box {
+      background: rgba(245, 158, 11, 0.16);
+      border: 1px solid #fbbf24;
+      color: #fef08a;
+      border-radius: 10px;
+      padding: 0.7rem 0.9rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-top: 0.9rem;
+      line-height: 1.4;
+    }
+
     .btn {
       display: inline-block;
       background: var(--primary-dark);
@@ -508,7 +575,7 @@
       font-size: 0.9rem;
       font-weight: 700;
       letter-spacing: 0.5px;
-      margin-top: 1rem;
+      margin-top: 0.8rem;
       border: none;
       cursor: pointer;
     }
@@ -520,6 +587,12 @@
     .btn-whatsapp {
       background: #25D366;
       color: #fff;
+    }
+    .btn-download-pass {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #0f172a;
+      font-weight: 800;
+      box-shadow: 0 4px 15px rgba(245, 158, 11, 0.4);
     }
 
     .rsvp-input {
@@ -572,6 +645,9 @@
   <audio id="bgMusic" loop="">
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
   </audio>
+  
+  <!-- Botón flotante para ver el Pase Digital guardado -->
+  <button type="button" class="floating-pass-btn" id="btnFloatingPass" style="display: none;">🎟️ Ver mi Pase</button>
   <button type="button" class="music-btn" id="btnMusic" title="Música">🎵</button>
 
   <!-- PORTADA TEMÁTICA HÉRCULES INFANTIL 3 AÑOS -->
@@ -592,14 +668,14 @@
       <h2 class="section-title">¡Falta Muy Poco!</h2>
       <p class="section-subtitle">Cuenta regresiva para la gran aventura</p>
       <div class="countdown">
-        <div class="time-box"><span id="days">30</span><small>Días</small></div>
-        <div class="time-box"><span id="hours">15</span><small>Horas</small></div>
-        <div class="time-box"><span id="minutes">54</span><small>Min</small></div>
-        <div class="time-box"><span id="seconds">25</span><small>Seg</small></div>
+        <div class="time-box"><span id="days">29</span><small>Días</small></div>
+        <div class="time-box"><span id="hours">18</span><small>Horas</small></div>
+        <div class="time-box"><span id="minutes">39</span><small>Min</small></div>
+        <div class="time-box"><span id="seconds">24</span><small>Seg</small></div>
       </div>
     </section>
 
-    <!-- SECCIÓN 2: PAPÁS Y PADRINOS (PRESENTACIÓN 3 AÑOS) -->
+    <!-- SECCIÓN 2: PAPÁS Y PADRINOS -->
     <section class="card section-wrapper" id="sec-2">
       
       <h2 class="section-title">Con el Amor de</h2>
@@ -615,7 +691,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 3: CARRUSEL DE FOTOS DEL PEQUEÑO -->
+    <!-- SECCIÓN 3: CARRUSEL DE FOTOS -->
     <section class="card section-wrapper" id="sec-3">
       
       <h2 class="section-title">Mis Aventuras</h2>
@@ -639,7 +715,7 @@
       <div class="carousel-dots" id="carouselDots"><button type="button" class="carousel-dot active"></button><button type="button" class="carousel-dot"></button><button type="button" class="carousel-dot"></button></div>
     </section>
 
-    <!-- SECCIÓN 4: MISA DE 3 AÑOS Y SALÓN DE FIESTAS -->
+    <!-- SECCIÓN 4: UBICACIONES -->
     <section class="card section-wrapper" id="sec-4">
       
       <h2 class="section-title">¿Dónde y Cuándo?</h2>
@@ -680,21 +756,62 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 6: CONFIRMACIÓN WHATSAPP -->
+    <!-- SECCIÓN 6: CONFIRMACIÓN POR WHATSAPP + DESBLOQUEO DE PASE DIGITAL -->
     <section class="card section-wrapper" id="sec-6">
       
       <h2 class="section-title">Confirma tu Asistencia</h2>
-      <p class="section-subtitle">Confirma para tener listo tu dulcero</p>
+      <p class="section-subtitle">Envía tu confirmación por WhatsApp para desbloquear tu pase</p>
       
-      <input type="text" id="guestName" class="rsvp-input" placeholder="Nombre de tu familia...">
-      <select id="guestCount" class="rsvp-input">
-        <option value="1 adulto y 1 niño">1 Adulto + 1 Niño</option>
-        <option value="2 adultos y 1 niño">2 Adultos + 1 Niño</option>
-        <option value="2 adultos y 2 niños">2 Adultos + 2 Niños</option>
-        <option value="2 adultos">2 Adultos</option>
-      </select>
-      
-      <button type="button" id="btnConfirmarWa" class="btn btn-whatsapp">📲 Confirmar por WhatsApp</button>
+      <div id="rsvpFormBox">
+        <input type="text" id="guestName" class="rsvp-input" placeholder="Escribe tu nombre o familia..." value="">
+        <select id="guestCount" class="rsvp-input">
+          <option value="1 Adulto (1 pase)">1 Adulto (1 pase)</option>
+          <option value="2 Adultos (2 pases)">2 Adultos (2 pases)</option>
+          <option value="1 Adulto + 1 Niño (2 pases)">1 Adulto + 1 Niño (2 pases)</option>
+          <option value="2 Adultos + 1 Niño (3 pases)">2 Adultos + 1 Niño (3 pases)</option>
+          <option value="2 Adultos + 2 Niños (4 pases)">2 Adultos + 2 Niños (4 pases)</option>
+          <option value="3 Adultos + 2 Niños (5 pases)">3 Adultos + 2 Niños (5 pases)</option>
+        </select>
+        
+        <button type="button" id="btnConfirmarWa" class="btn btn-whatsapp">📲 1. Enviar Confirmación por WhatsApp</button>
+      </div>
+
+      <!-- PASO INTERMEDIO MIENTRAS ENVÍA EL WHATSAPP -->
+      <div id="pendingWaBox" style="display:none; margin-top:1.2rem; padding:1rem; background:rgba(245,158,11,0.12); border:1.5px dashed #f59e0b; border-radius:14px;">
+        <p style="font-size:0.88rem; font-weight:600; margin-bottom:0.5rem;">⏳ Esperando envío en WhatsApp...</p>
+        <p style="font-size:0.78rem; opacity:0.85; margin-bottom:0.7rem;">Una vez que hayas enviado el mensaje en WhatsApp, regresa aquí o presiona el botón de abajo para generar tu pase:</p>
+        <button type="button" id="btnDesbloquearPase" class="btn" style="margin-top:0; font-size:0.82rem;">✅ Ya envié mi WhatsApp, ver mi Pase</button>
+      </div>
+
+      <!-- APARTADO DONDE EL INVITADO VE Y DESCARGA SU PASE DIGITAL -->
+      <div id="digitalPassContainer" style="display: none;">
+        <div class="digital-pass-card">
+          <div class="pass-badge">🎟️ Pase Digital Oficial</div>
+          <p id="passFolioText" style="font-family:monospace; font-size:0.88rem; color:#fbbf24; letter-spacing:2px; font-weight:700;">FOLIO: #KE-3064</p>
+
+          <div class="pass-event-emblem">
+            <p style="font-size:0.68rem; text-transform:uppercase; color:#94a3b8; letter-spacing:1.5px; margin-bottom:2px;">Evento</p>
+            <h3 id="passEventTitle" style="font-family:var(--font-script); font-size:1.55rem; color:#fde047; line-height:1.2;">Matías • 3 Añitos</h3>
+            <p id="passEventDate" style="font-size:0.78rem; color:#e2e8f0; margin-top:4px; letter-spacing:1px;">SÁBADO 19 • DICIEMBRE • 2026</p>
+          </div>
+          
+          <hr class="pass-divider">
+          
+          <p style="font-size:0.72rem; text-transform:uppercase; color:#94a3b8; letter-spacing:1px;">Invitado / Familia</p>
+          <p id="passGuestName" style="font-size:1.25rem; font-weight:700; color:#ffffff; margin-bottom:0.6rem;">Emmanuel</p>
+          
+          <p style="font-size:0.72rem; text-transform:uppercase; color:#94a3b8; letter-spacing:1px;">Asistentes Solicitados</p>
+          <p id="passGuestCount" style="font-size:1.1rem; font-weight:700; color:#38bdf8; margin-bottom:0.4rem;">3 Adultos + 2 Niños (5 pases)</p>
+
+          <div class="pass-warning-box">
+            ⚠️ Este es tu pase, guárdalo bien porque tendrás que presentarlo al entrar.
+          </div>
+        </div>
+
+        <div style="margin-top:12px;">
+          <button type="button" id="btnDescargarPaseImg" class="btn btn-download-pass">📥 Descargar Pase (Imagen)</button>
+        </div>
+      </div>
     </section>
 
     <!-- SECCIÓN 7: KONEKPARTY LIVE -->
@@ -890,7 +1007,151 @@
       animar();
     })();
 
-    // 2. CARRUSEL Y VISOR AMPLIADO
+    // 2. SISTEMA DE PASE DIGITAL + DESCARGA DE BOLETO EN IMAGEN PNG
+    var STORAGE_KEY_PASE = "konekevent_pase_" + window.location.pathname;
+
+    function mostrarPaseDigital(datosPase, abrirWhatsApp) {
+      var evento = document.getElementById("nombreFestejada").innerText.trim();
+      var fecha = document.getElementById("fechaTexto").innerText.trim();
+
+      document.getElementById("passEventTitle").innerText = evento;
+      document.getElementById("passEventDate").innerText = fecha;
+      document.getElementById("passGuestName").innerText = datosPase.nombre;
+      document.getElementById("passGuestCount").innerText = datosPase.asistentes;
+      document.getElementById("passFolioText").innerText = "FOLIO: " + datosPase.folio;
+
+      document.getElementById("digitalPassContainer").style.display = "block";
+      var floatBtn = document.getElementById("btnFloatingPass");
+      if (floatBtn) floatBtn.style.display = "flex";
+
+      if (abrirWhatsApp) {
+        var msgWa = "¡Hola! Confirmamos nuestra asistencia a *" + evento + "* 🎉\n" +
+                    "🎟️ *Folio de Pase:* " + datosPase.folio + "\n" +
+                    "👤 *Invitado/Familia:* " + datosPase.nombre + "\n" +
+                    "👥 *Lugares solicitados:* " + datosPase.asistentes;
+        window.open("https://wa.me/" + WHATSAPP_DESTINO + "?text=" + encodeURIComponent(msgWa), "_blank");
+      }
+    }
+
+    // Genera y descarga una imagen PNG nítida del pase digital para guardar en el celular
+    function descargarImagenPase() {
+      var evento = document.getElementById("passEventTitle").innerText.trim();
+      var fecha = document.getElementById("passEventDate").innerText.trim();
+      var invitado = document.getElementById("passGuestName").innerText.trim();
+      var asistentes = document.getElementById("passGuestCount").innerText.trim();
+      var folio = document.getElementById("passFolioText").innerText.trim();
+
+      var canvas = document.createElement("canvas");
+      canvas.width = 720;
+      canvas.height = 960;
+      var ctx = canvas.getContext("2d");
+
+      // Fondo degradado oscuro elegante
+      var grad = ctx.createLinearGradient(0, 0, 720, 960);
+      grad.addColorStop(0, "#0f172a");
+      grad.addColorStop(1, "#1e293b");
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, 720, 960);
+
+      // Marco dorado
+      ctx.strokeStyle = "#fbbf24";
+      ctx.lineWidth = 8;
+      ctx.strokeRect(24, 24, 672, 912);
+
+      // Etiqueta superior
+      ctx.fillStyle = "#fde047";
+      ctx.font = "bold 22px sans-serif";
+      ctx.textAlign = "center";
+      ctx.fillText("🎟️ PASE DIGITAL OFICIAL • KONEKEVENT", 360, 95);
+
+      ctx.fillStyle = "#fbbf24";
+      ctx.font = "bold 24px monospace";
+      ctx.fillText(folio, 360, 140);
+
+      // Caja destacada con el nombre del evento
+      ctx.fillStyle = "rgba(251, 191, 36, 0.14)";
+      ctx.fillRect(60, 180, 600, 190);
+      ctx.strokeStyle = "rgba(251, 191, 36, 0.65)";
+      ctx.lineWidth = 3;
+      ctx.strokeRect(60, 180, 600, 190);
+
+      ctx.fillStyle = "#94a3b8";
+      ctx.font = "bold 18px sans-serif";
+      ctx.fillText("EVENTO", 360, 222);
+
+      ctx.fillStyle = "#fde047";
+      ctx.font = "bold 36px sans-serif";
+      ctx.fillText(evento.substring(0, 28), 360, 280);
+
+      ctx.fillStyle = "#e2e8f0";
+      ctx.font = "600 20px sans-serif";
+      ctx.fillText(fecha, 360, 332);
+
+      // Línea punteada de boleto
+      ctx.setLineDash([12, 10]);
+      ctx.strokeStyle = "rgba(255,255,255,0.3)";
+      ctx.beginPath();
+      ctx.moveTo(60, 415);
+      ctx.lineTo(660, 415);
+      ctx.stroke();
+      ctx.setLineDash([]);
+
+      // Datos del invitado
+      ctx.fillStyle = "#94a3b8";
+      ctx.font = "bold 20px sans-serif";
+      ctx.fillText("INVITADO / FAMILIA", 360, 480);
+
+      ctx.fillStyle = "#ffffff";
+      ctx.font = "bold 38px sans-serif";
+      ctx.fillText(invitado.substring(0, 26), 360, 535);
+
+      ctx.fillStyle = "#94a3b8";
+      ctx.font = "bold 20px sans-serif";
+      ctx.fillText("ASISTENTES SOLICITADOS", 360, 615);
+
+      ctx.fillStyle = "#38bdf8";
+      ctx.font = "bold 32px sans-serif";
+      ctx.fillText(asistentes, 360, 665);
+
+      // Recuadro de advertencia de entrada
+      ctx.fillStyle = "rgba(245, 158, 11, 0.2)";
+      ctx.fillRect(60, 730, 600, 110);
+      ctx.strokeStyle = "#fbbf24";
+      ctx.lineWidth = 2;
+      ctx.strokeRect(60, 730, 600, 110);
+
+      ctx.fillStyle = "#fef08a";
+      ctx.font = "bold 20px sans-serif";
+      ctx.fillText("⚠️ Este es tu pase, guárdalo bien porque", 360, 775);
+      ctx.fillText("tendrás que presentarlo al entrar.", 360, 810);
+
+      // Pie de marca
+      ctx.fillStyle = "#64748b";
+      ctx.font = "16px sans-serif";
+      ctx.fillText("KonekEvent by KONEK Print & Tech ⚡", 360, 900);
+
+      var link = document.createElement("a");
+      link.download = "Pase_" + invitado.replace(/\s+/g, "_") + ".png";
+      link.href = canvas.toDataURL("image/png");
+      link.click();
+    }
+
+    function cargarPaseGuardado() {
+      try {
+        var raw = localStorage.getItem(STORAGE_KEY_PASE);
+        if (raw) {
+          var datos = JSON.parse(raw);
+          if (datos && datos.nombre) {
+            document.getElementById("guestName").value = datos.nombre;
+            document.getElementById("guestCount").value = datos.asistentes;
+            mostrarPaseDigital(datos, false);
+          }
+        }
+      } catch (e) {}
+    }
+    cargarPaseGuardado();
+
+    // 3. CARRUSEL Y VISOR AMPLIADO
     function actualizarPosicionCarrusel() {
       var track = document.getElementById("carouselTrack");
       if (track) track.style.transform = "translateX(-" + (slideIndex * 100) + "%)";
@@ -950,7 +1211,7 @@
       }
     });
 
-    // 3. CUENTA REGRESIVA
+    // 4. CUENTA REGRESIVA
     setInterval(function() {
       var targetDate = new Date(FECHA_OBJETIVO).getTime();
       var distance = targetDate - new Date().getTime();
@@ -961,7 +1222,7 @@
       document.getElementById("seconds").innerText = String(Math.floor((distance % 60000) / 1000)).padStart(2, '0');
     }, 1000);
 
-    // 4. UTILIDADES DEL EDITOR VISUAL
+    // 5. UTILIDADES DEL EDITOR VISUAL
     function comprimirImagen(file, maxWidth, callback) {
       var reader = new FileReader();
       reader.onload = function(e) {
@@ -1015,7 +1276,7 @@
       root.setProperty('--card-radius', document.getElementById("rngRad").value + "px");
     }
 
-    // 5. DELEGADOR GLOBAL DE CLICS
+    // 6. DELEGADOR GLOBAL DE CLICS
     document.addEventListener("click", function(e) {
       if (e.target.classList.contains("wheel-swatch")) {
         aplicarPaletaColores(
@@ -1044,15 +1305,38 @@
         if (m.paused) m.play(); else m.pause();
         return;
       }
-      if (btn.id === "btnConfirmarWa") {
-        var nombre = document.getElementById("guestName").value.trim();
-        var pases = document.getElementById("guestCount").value;
-        var festejado = document.getElementById("nombreFestejada").innerText.trim();
-        if (!nombre) { alert("Por favor escribe tu nombre."); return; }
-        window.open("https://wa.me/" + WHATSAPP_DESTINO + "?text=" + encodeURIComponent("¡Hola! Confirmamos asistencia a la fiesta de " + festejado + ".\nFamilia: " + nombre + "\nAsistentes: " + pases), "_blank");
+
+      if (btn.id === "btnFloatingPass") {
+        var passBox = document.getElementById("digitalPassContainer");
+        if (passBox) passBox.scrollIntoView({ behavior: "smooth", block: "center" });
         return;
       }
 
+      if (btn.id === "btnConfirmarWa") {
+        var nombre = document.getElementById("guestName").value.trim();
+        var asistentes = document.getElementById("guestCount").value;
+        if (!nombre) { alert("Por favor escribe tu nombre o el de tu familia."); return; }
+
+        var folioExistente = "";
+        try {
+          var prev = JSON.parse(localStorage.getItem(STORAGE_KEY_PASE) || "{}");
+          if (prev.folio) folioExistente = prev.folio;
+        } catch(err) {}
+
+        var folio = folioExistente || ("#KE-" + Math.floor(1000 + Math.random() * 9000));
+        var datosPase = { nombre: nombre, asistentes: asistentes, folio: folio };
+        try { localStorage.setItem(STORAGE_KEY_PASE, JSON.stringify(datosPase)); } catch(err) {}
+
+        mostrarPaseDigital(datosPase, true);
+        return;
+      }
+
+      if (btn.id === "btnDescargarPaseImg") {
+        descargarImagenPase();
+        return;
+      }
+
+      // Botones Barra Global Editor
       if (btn.id === "btnPortada") {
         pedirArchivo("image/*", false, function(files) {
           comprimirImagen(files[0], 1200, function(url) {
@@ -1170,7 +1454,7 @@
       }
     });
 
-    // 6. DELEGADOR DE CAMBIOS
+    // 7. DELEGADOR DE CAMBIOS
     document.addEventListener("input", function(e) {
       var el = e.target;
       if (["inpColor", "inpBg", "rngWidth", "rngPad", "rngRad"].indexOf(el.id) !== -1) {
@@ -1232,7 +1516,7 @@
       }
     });
 
-    // 7. EXPORTAR ARCHIVO FINAL LIMPIO
+    // 8. EXPORTAR ARCHIVO FINAL LIMPIO
     function exportarInvitacionFinal() {
       var clone = document.documentElement.cloneNode(true);
       var bar = clone.querySelector("#konek-editor-bar");
@@ -1240,6 +1524,13 @@
       clone.querySelectorAll(".section-controls").forEach(function(el) { el.remove(); });
       clone.querySelectorAll(".section-hidden-preview").forEach(function(el) { el.remove(); });
       clone.querySelectorAll("[contenteditable]").forEach(function(el) { el.removeAttribute("contenteditable"); });
+
+      var passCont = clone.querySelector("#digitalPassContainer");
+      if (passCont) passCont.style.display = "none";
+      var fBtn = clone.querySelector("#btnFloatingPass");
+      if (fBtn) fBtn.style.display = "none";
+      var gName = clone.querySelector("#guestName");
+      if (gName) gName.setAttribute("value", "");
 
       var p = document.getElementById("inpColor").value;
       var bg = document.getElementById("inpBg").value;

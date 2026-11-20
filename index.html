@@ -11,10 +11,10 @@
 
   <style id="themeStyles">
     :root {
-      --bg-color: #fefce8;
+      --bg-color: #ecfdf5;
       --bg-image: none;
-      --primary: #f59e0b;
-      --primary-dark: #f59e0b;
+      --primary: #10b981;
+      --primary-dark: #10b981;
       --text-dark: #1e293b;
       --text-muted: #475569;
       --card-bg: rgba(255, 255, 255, 0.95);
@@ -259,7 +259,6 @@
       color: #fef08a;
     }
 
-    /* Botones flotantes (Música + Ver mi Pase) */
     .music-btn {
       position: fixed;
       bottom: 20px;
@@ -298,7 +297,6 @@
       gap: 6px;
     }
 
-    /* Contenedor y Cuadros Interiores */
     .container {
       max-width: var(--card-max-w);
       margin: 0 auto;
@@ -334,7 +332,6 @@
       border: 2.5px solid rgba(245, 158, 11, 0.55);
     }
 
-    /* Cuenta Regresiva */
     .countdown {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -365,7 +362,6 @@
       color: #b45309;
     }
 
-    /* Padres y Padrinos */
     .names-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -380,7 +376,6 @@
       margin-bottom: 0.3rem;
     }
 
-    /* CARRUSEL EN TARJETA */
     .carousel-container {
       position: relative;
       width: 100%;
@@ -452,7 +447,6 @@
       border-radius: 6px;
     }
 
-    /* VISOR AMPLIADO CON CARRUSEL PANTALLA COMPLETA */
     #photoLightbox {
       display: none;
       position: fixed;
@@ -517,7 +511,7 @@
       letter-spacing: 1px;
     }
 
-    /* ESTILOS DEL PASE DIGITAL GENERADO (SIN QR, CON NOMBRE DEL EVENTO Y DESCARGA) */
+    /* ESTILOS DEL PASE DIGITAL */
     .digital-pass-card {
       margin-top: 1.5rem;
       background: linear-gradient(135deg, #0f172a, #1e293b);
@@ -637,7 +631,7 @@
 </head>
 <body>
 
-  <canvas id="animatedBgCanvas" width="1366" height="633"></canvas>
+  <canvas id="animatedBgCanvas" width="1528" height="732"></canvas>
 
   <!-- PANEL SUPERIOR GLOBAL KONEKEVENT STUDIO PRO -->
   
@@ -646,11 +640,10 @@
     <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
   </audio>
   
-  <!-- Botón flotante para ver el Pase Digital guardado -->
   <button type="button" class="floating-pass-btn" id="btnFloatingPass" style="display: none;">🎟️ Ver mi Pase</button>
   <button type="button" class="music-btn" id="btnMusic" title="Música">🎵</button>
 
-  <!-- PORTADA TEMÁTICA HÉRCULES INFANTIL 3 AÑOS -->
+  <!-- PORTADA -->
   <header class="hero" id="heroSection">
     <p class="hero-subtitle">⚡ ¡Un Pequeño Gran Héroe Cumple 3 Años! ⚡</p>
     <h1 class="hero-title" id="nombreFestejada">Matías • 3 Añitos</h1>
@@ -669,9 +662,9 @@
       <p class="section-subtitle">Cuenta regresiva para la gran aventura</p>
       <div class="countdown">
         <div class="time-box"><span id="days">29</span><small>Días</small></div>
-        <div class="time-box"><span id="hours">18</span><small>Horas</small></div>
-        <div class="time-box"><span id="minutes">39</span><small>Min</small></div>
-        <div class="time-box"><span id="seconds">24</span><small>Seg</small></div>
+        <div class="time-box"><span id="hours">15</span><small>Horas</small></div>
+        <div class="time-box"><span id="minutes">00</span><small>Min</small></div>
+        <div class="time-box"><span id="seconds">41</span><small>Seg</small></div>
       </div>
     </section>
 
@@ -756,7 +749,7 @@
       </div>
     </section>
 
-    <!-- SECCIÓN 6: CONFIRMACIÓN POR WHATSAPP + DESBLOQUEO DE PASE DIGITAL -->
+    <!-- SECCIÓN 6: CONFIRMACIÓN WHATSAPP + DESBLOQUEO DE PASE DIGITAL -->
     <section class="card section-wrapper" id="sec-6">
       
       <h2 class="section-title">Confirma tu Asistencia</h2>
@@ -787,7 +780,7 @@
       <div id="digitalPassContainer" style="display: none;">
         <div class="digital-pass-card">
           <div class="pass-badge">🎟️ Pase Digital Oficial</div>
-          <p id="passFolioText" style="font-family:monospace; font-size:0.88rem; color:#fbbf24; letter-spacing:2px; font-weight:700;">FOLIO: #KE-3064</p>
+          <p id="passFolioText" style="font-family:monospace; font-size:0.88rem; color:#fbbf24; letter-spacing:2px; font-weight:700;">FOLIO: #KE-3448</p>
 
           <div class="pass-event-emblem">
             <p style="font-size:0.68rem; text-transform:uppercase; color:#94a3b8; letter-spacing:1.5px; margin-bottom:2px;">Evento</p>
@@ -798,10 +791,10 @@
           <hr class="pass-divider">
           
           <p style="font-size:0.72rem; text-transform:uppercase; color:#94a3b8; letter-spacing:1px;">Invitado / Familia</p>
-          <p id="passGuestName" style="font-size:1.25rem; font-weight:700; color:#ffffff; margin-bottom:0.6rem;">Emmanuel</p>
+          <p id="passGuestName" style="font-size:1.25rem; font-weight:700; color:#ffffff; margin-bottom:0.6rem;">emm</p>
           
           <p style="font-size:0.72rem; text-transform:uppercase; color:#94a3b8; letter-spacing:1px;">Asistentes Solicitados</p>
-          <p id="passGuestCount" style="font-size:1.1rem; font-weight:700; color:#38bdf8; margin-bottom:0.4rem;">3 Adultos + 2 Niños (5 pases)</p>
+          <p id="passGuestCount" style="font-size:1.1rem; font-weight:700; color:#38bdf8; margin-bottom:0.4rem;">1 Adulto (1 pase)</p>
 
           <div class="pass-warning-box">
             ⚠️ Este es tu pase, guárdalo bien porque tendrás que presentarlo al entrar.
@@ -831,7 +824,7 @@
   <div id="photoLightbox" style="display: none;">
     <button type="button" class="lb-close" id="btnLbClose" title="Cerrar">✕</button>
     <button type="button" class="lb-btn lb-prev" id="btnLbPrev" title="Anterior">❮</button>
-    <img id="lightboxImg" src="" alt="Foto ampliada">
+    <img id="lightboxImg" src="https://images.unsplash.com/photo-1555993539-1732b0258235?auto=format&amp;fit=crop&amp;w=900&amp;q=80" alt="Foto ampliada">
     <button type="button" class="lb-btn lb-next" id="btnLbNext" title="Siguiente">❯</button>
     <div class="lb-counter" id="lbCounter">1 / 3</div>
   </div>
@@ -1007,10 +1000,11 @@
       animar();
     })();
 
-    // 2. SISTEMA DE PASE DIGITAL + DESCARGA DE BOLETO EN IMAGEN PNG
+    // 2. SISTEMA DE PASE DIGITAL (SE DESBLOQUEA TRAS ENVIAR WHATSAPP)
     var STORAGE_KEY_PASE = "konekevent_pase_" + window.location.pathname;
+    var STORAGE_KEY_PENDIENTE = "konekevent_pendiente_" + window.location.pathname;
 
-    function mostrarPaseDigital(datosPase, abrirWhatsApp) {
+    function renderizarBoletoEnPantalla(datosPase) {
       var evento = document.getElementById("nombreFestejada").innerText.trim();
       var fecha = document.getElementById("fechaTexto").innerText.trim();
 
@@ -1020,20 +1014,33 @@
       document.getElementById("passGuestCount").innerText = datosPase.asistentes;
       document.getElementById("passFolioText").innerText = "FOLIO: " + datosPase.folio;
 
+      document.getElementById("pendingWaBox").style.display = "none";
       document.getElementById("digitalPassContainer").style.display = "block";
       var floatBtn = document.getElementById("btnFloatingPass");
       if (floatBtn) floatBtn.style.display = "flex";
-
-      if (abrirWhatsApp) {
-        var msgWa = "¡Hola! Confirmamos nuestra asistencia a *" + evento + "* 🎉\n" +
-                    "🎟️ *Folio de Pase:* " + datosPase.folio + "\n" +
-                    "👤 *Invitado/Familia:* " + datosPase.nombre + "\n" +
-                    "👥 *Lugares solicitados:* " + datosPase.asistentes;
-        window.open("https://wa.me/" + WHATSAPP_DESTINO + "?text=" + encodeURIComponent(msgWa), "_blank");
-      }
     }
 
-    // Genera y descarga una imagen PNG nítida del pase digital para guardar en el celular
+    function confirmarYGenerarPaseDesbloqueado() {
+      try {
+        var rawPendiente = localStorage.getItem(STORAGE_KEY_PENDIENTE);
+        if (!rawPendiente) return false;
+        var datos = JSON.parse(rawPendiente);
+        localStorage.setItem(STORAGE_KEY_PASE, JSON.stringify(datos));
+        localStorage.removeItem(STORAGE_KEY_PENDIENTE);
+        renderizarBoletoEnPantalla(datos);
+        return true;
+      } catch (e) { return false; }
+    }
+
+    document.addEventListener("visibilitychange", function() {
+      if (document.visibilityState === "visible") {
+        confirmarYGenerarPaseDesbloqueado();
+      }
+    });
+    window.addEventListener("focus", function() {
+      confirmarYGenerarPaseDesbloqueado();
+    });
+
     function descargarImagenPase() {
       var evento = document.getElementById("passEventTitle").innerText.trim();
       var fecha = document.getElementById("passEventDate").innerText.trim();
@@ -1046,19 +1053,16 @@
       canvas.height = 960;
       var ctx = canvas.getContext("2d");
 
-      // Fondo degradado oscuro elegante
       var grad = ctx.createLinearGradient(0, 0, 720, 960);
       grad.addColorStop(0, "#0f172a");
       grad.addColorStop(1, "#1e293b");
       ctx.fillStyle = grad;
       ctx.fillRect(0, 0, 720, 960);
 
-      // Marco dorado
       ctx.strokeStyle = "#fbbf24";
       ctx.lineWidth = 8;
       ctx.strokeRect(24, 24, 672, 912);
 
-      // Etiqueta superior
       ctx.fillStyle = "#fde047";
       ctx.font = "bold 22px sans-serif";
       ctx.textAlign = "center";
@@ -1068,7 +1072,6 @@
       ctx.font = "bold 24px monospace";
       ctx.fillText(folio, 360, 140);
 
-      // Caja destacada con el nombre del evento
       ctx.fillStyle = "rgba(251, 191, 36, 0.14)";
       ctx.fillRect(60, 180, 600, 190);
       ctx.strokeStyle = "rgba(251, 191, 36, 0.65)";
@@ -1087,7 +1090,6 @@
       ctx.font = "600 20px sans-serif";
       ctx.fillText(fecha, 360, 332);
 
-      // Línea punteada de boleto
       ctx.setLineDash([12, 10]);
       ctx.strokeStyle = "rgba(255,255,255,0.3)";
       ctx.beginPath();
@@ -1096,7 +1098,6 @@
       ctx.stroke();
       ctx.setLineDash([]);
 
-      // Datos del invitado
       ctx.fillStyle = "#94a3b8";
       ctx.font = "bold 20px sans-serif";
       ctx.fillText("INVITADO / FAMILIA", 360, 480);
@@ -1113,7 +1114,6 @@
       ctx.font = "bold 32px sans-serif";
       ctx.fillText(asistentes, 360, 665);
 
-      // Recuadro de advertencia de entrada
       ctx.fillStyle = "rgba(245, 158, 11, 0.2)";
       ctx.fillRect(60, 730, 600, 110);
       ctx.strokeStyle = "#fbbf24";
@@ -1125,7 +1125,6 @@
       ctx.fillText("⚠️ Este es tu pase, guárdalo bien porque", 360, 775);
       ctx.fillText("tendrás que presentarlo al entrar.", 360, 810);
 
-      // Pie de marca
       ctx.fillStyle = "#64748b";
       ctx.font = "16px sans-serif";
       ctx.fillText("KonekEvent by KONEK Print & Tech ⚡", 360, 900);
@@ -1144,8 +1143,16 @@
           if (datos && datos.nombre) {
             document.getElementById("guestName").value = datos.nombre;
             document.getElementById("guestCount").value = datos.asistentes;
-            mostrarPaseDigital(datos, false);
+            renderizarBoletoEnPantalla(datos);
+            return;
           }
+        }
+        var rawPend = localStorage.getItem(STORAGE_KEY_PENDIENTE);
+        if (rawPend) {
+          var pend = JSON.parse(rawPend);
+          document.getElementById("guestName").value = pend.nombre;
+          document.getElementById("guestCount").value = pend.asistentes;
+          document.getElementById("pendingWaBox").style.display = "block";
         }
       } catch (e) {}
     }
@@ -1319,15 +1326,29 @@
 
         var folioExistente = "";
         try {
-          var prev = JSON.parse(localStorage.getItem(STORAGE_KEY_PASE) || "{}");
+          var prev = JSON.parse(localStorage.getItem(STORAGE_KEY_PASE) || localStorage.getItem(STORAGE_KEY_PENDIENTE) || "{}");
           if (prev.folio) folioExistente = prev.folio;
         } catch(err) {}
 
         var folio = folioExistente || ("#KE-" + Math.floor(1000 + Math.random() * 9000));
         var datosPase = { nombre: nombre, asistentes: asistentes, folio: folio };
-        try { localStorage.setItem(STORAGE_KEY_PASE, JSON.stringify(datosPase)); } catch(err) {}
 
-        mostrarPaseDigital(datosPase, true);
+        try { localStorage.setItem(STORAGE_KEY_PENDIENTE, JSON.stringify(datosPase)); } catch(err) {}
+
+        document.getElementById("digitalPassContainer").style.display = "none";
+        document.getElementById("pendingWaBox").style.display = "block";
+
+        var evento = document.getElementById("nombreFestejada").innerText.trim();
+        var msgWa = "¡Hola! Confirmamos nuestra asistencia a *" + evento + "* 🎉\n" +
+                    "🎟️ *Folio de Pase:* " + folio + "\n" +
+                    "👤 *Invitado/Familia:* " + nombre + "\n" +
+                    "👥 *Lugares solicitados:* " + asistentes;
+        window.open("https://wa.me/" + WHATSAPP_DESTINO + "?text=" + encodeURIComponent(msgWa), "_blank");
+        return;
+      }
+
+      if (btn.id === "btnDesbloquearPase") {
+        confirmarYGenerarPaseDesbloqueado();
         return;
       }
 
@@ -1527,6 +1548,8 @@
 
       var passCont = clone.querySelector("#digitalPassContainer");
       if (passCont) passCont.style.display = "none";
+      var pendCont = clone.querySelector("#pendingWaBox");
+      if (pendCont) pendCont.style.display = "none";
       var fBtn = clone.querySelector("#btnFloatingPass");
       if (fBtn) fBtn.style.display = "none";
       var gName = clone.querySelector("#guestName");
